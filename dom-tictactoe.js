@@ -31,17 +31,18 @@ window.onload = playerTurn = () => {
 
 
 // --------ask about this----------
-// let player1Score = 0; 
-// let player2Score = 0;
+let player1Score = ''; 
+let player2Score = '';
 
-// const playerScore = () => {
- 
-//   if(checkForWin() && currentMarker == 'X'){
-//     document.getElementById('playerXScore').innerHTML = player1Score++;
-//   } else if(checkForWin() && currentMarker == 'O'){
-//     document.getElementById('playerOScore').innerHTML = player2Score++;
-//   }
-// }
+const playerScore = () => {
+  player1Score = parseInt('0')
+  player2Score = parseInt('0')
+  if(checkForWin() && currentMarker == 'X'){
+    document.getElementById('playerXScore').innerHTML = player1Score++;
+  } else if(checkForWin() && currentMarker == 'O'){
+    document.getElementById('playerOScore').innerHTML = player2Score++;
+  }
+}
 
 // --------ask about this----------
 
@@ -136,11 +137,17 @@ const resetBoard = () => {
     ['', '', '']]
 }
 
+
+
+const resetScore = () => {
+  document.getElementById('playerXScore').innerHTML = '0'
+  document.getElementById('playerOScore').innerHTML = '0'
+}
+
 // **BONUSES**
 
 // 1. Display the current player's turn ***done***
-// **BONUS** you could make the dismissal of this alert window reset the board...
 // 2. Count number of wins for each player and display them
-// 3. Reset the number of wins
+// 3. Reset the number of wins ***done***
 // 4. Clear the board on alert window dismissal
-// 5. Add players names and display who wins, i.e. "Congrats Emily, you won with 0s!"
+// 5. Add players names and display who wins, i.e. "Congrats Emily, you won with 0s!"***done***

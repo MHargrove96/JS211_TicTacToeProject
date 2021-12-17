@@ -1,7 +1,64 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.jumbotron{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+#welcome_Title{
+color: black;
+font-size: 3em;
+text-shadow: 2px 2px gray;
+}
+
+#para-1{
+  color: black;
+  font-size: 2em;
+
+}
+
+#xNameInput{
+  text-align: center;
+}
+
+#oNameInput{
+  text-align: center;
+}
+
 td{
   height:150px;
   width:150px;
   text-align: center;
   border: 5px solid black;
   font-size: 100px;
+}
+
+#scoreBox{
+  display: flex;
+  /* border: 2px solid black; */
+  justify-content: space-evenly;
+  margin: 25px;
+  padding: 20px;
+  width: 30%;
+}
+
+.scoreDisplay{
+  border: 2px solid black;
+  padding: 15px;
+}
+
+#playerXScore{
+  font-size: 2em;
+  font-weight: 650;
+}
+
+#playerOScore{
+  font-size: 2em;
+  font-weight: 650;
 }
