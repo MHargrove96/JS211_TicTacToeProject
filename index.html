@@ -10,14 +10,15 @@
   <link rel="stylesheet" href="cssreset.css">
   <link rel="stylesheet" href="tictactoe.css">
 </head>
+
 <body>
   <div class="container">
     <div class="jumbotron">
       <h1 id="welcome_Title">Welcome to Tic Tac Toe</h1>
       <p id="para-1">Get ready to play!</p>
-      <input type="text" id="xNameInput" placeholder="X's Name" >
+      <input type="text" id="xNameInput" placeholder="X's Name">
       <br>
-      <input type="text" id="oNameInput" placeholder="O's Name" >
+      <input type="text" id="oNameInput" placeholder="O's Name">
       <h3 id="turnAnnouncement" onload="playerTurn()"></h3>
       <br>
       <!-- uses the built-in onclick attribute to call the resetBoard function -->
@@ -47,15 +48,22 @@
       </tr>
     </table>
     <div id="scoreBox">
-      <span class="scoreDisplay">
-      <h3 id="playerXScore">X</h3>
+      <span>
+        <h2 id="xName">X</h2>
       </span>
       <span class="scoreDisplay">
-      <h3 id="playerOScore">O</h3>
+        <h3 id="playerXScore">0</h3>
       </span>
-  </div>
-    
+      <span>
+        <h2 id="oName">O</h2>
+      </span>
+      <span class="scoreDisplay">
+        <h3 id="playerOScore">0</h3>
+      </span>
+    </div>
+
   </div>
 </body>
 <script src="dom-tictactoe.js"></script>
+
 </html>

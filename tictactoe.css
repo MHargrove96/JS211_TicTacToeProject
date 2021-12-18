@@ -46,11 +46,25 @@ td{
   margin: 25px;
   padding: 20px;
   width: 30%;
+  align-items: center;
+  column-gap: 10px;
 }
 
 .scoreDisplay{
   border: 2px solid black;
   padding: 15px;
+}
+
+#xName{
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 600;
+}
+
+#oName{
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 600;
 }
 
 #playerXScore{

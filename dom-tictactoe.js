@@ -3,47 +3,50 @@ let board = [
   ['', '', ''],
   ['', '', ''],
   ['', '', '']]
- 
-  let xName = ''
-  let oName = ''
-  
-  
-    let xNameInput = document.getElementById('xNameInput')
-    xNameInput.addEventListener('keyup', (e) => {
-      xName = e.target.value
-      console.log(xName)
-    })
 
-    let oNameInput = document.getElementById('oNameInput')
-    oNameInput.addEventListener('keyup', (e) => {
-      oName = e.target.value
-      console.log(oName)
-    })
-    // --------ask about this----------
+let xName = ''
+let oName = ''
+
+
+let xNameInput = document.getElementById('xNameInput')
+xNameInput.addEventListener('keyup', (e) => {
+  xName = e.target.value
+  console.log(xName)
+  document.getElementById('xName').innerHTML = xName;
+})
+
+let oNameInput = document.getElementById('oNameInput')
+oNameInput.addEventListener('keyup', (e) => {
+  oName = e.target.value
+  console.log(oName)
+  document.getElementById('oName').innerHTML = oName;
+})
+// --------ask about this----------
 window.onload = playerTurn = () => {
-  if(currentMarker === 'X'){
-    document.getElementById('turnAnnouncement').innerHTML = xName || 'X' + ' it is your turn'
+  if (currentMarker === 'X') {
+    document.getElementById('turnAnnouncement').innerHTML = (xName || 'X') + ' it is your turn'
   } else {
-    document.getElementById('turnAnnouncement').innerHTML =  oName || 'O' + ' it is your turn'
+    document.getElementById('turnAnnouncement').innerHTML = (oName || 'O') + ' it is your turn'
   }
 }
 // --------ask about this----------
 
 
 // --------ask about this----------
-let player1Score = ''; 
-let player2Score = '';
+let player1Score = 0;
+let player2Score = 0;
+let clickCount = 0;
 
 const playerScore = () => {
-  player1Score = parseInt('0')
-  player2Score = parseInt('0')
-  if(checkForWin() && currentMarker == 'X'){
-    document.getElementById('playerXScore').innerHTML = player1Score++;
-  } else if(checkForWin() && currentMarker == 'O'){
-    document.getElementById('playerOScore').innerHTML = player2Score++;
+  if (currentMarker == 'X') {
+    player1Score++
+    document.getElementById('playerXScore').innerHTML = player1Score;
+  }
+  if (currentMarker == 'O') {
+    player2Score++
+    document.getElementById('playerOScore').innerHTML = player2Score;
   }
 }
-
 // --------ask about this----------
 
 
@@ -62,8 +65,16 @@ const addMarker = (id) => {
   document.getElementById(id).innerHTML = currentMarker
   const [row, column] = id.split('-')
   console.log(`We'll place a ${currentMarker} on square: ${id}`)
-  board[row][column] = currentMarker
-  checkForWin()
+  board[row][column] = currentMarker;
+  clickCount++
+  console.log(clickCount)
+  if (clickCount > 4) {
+    if (!checkForWin())
+      changeMarker()
+  }
+  if (clickCount < 5) {
+    changeMarker()
+  }
   // to add an X or O to the board to the DOM so it can be scene on the screen.
 }
 
@@ -71,12 +82,14 @@ const checkForWin = () => {
   // calls each checkForWin possibility and if any are true gives a page alert,
   if (horizontalWin() || verticalWin() || diagonalWin()) {
     window.alert(`${currentMarker === 'X' ? xName || 'X' : oName || 'O'} won!`)
+    clickCount = 0;
     playerScore()
+    resetBoard()
 
   } else {
     console.log('checkForWin was false')
     // if no win, change the marker from X to O, or O to X for the next player.
-    changeMarker()
+
   }
 }
 
@@ -124,25 +137,28 @@ const changeMarker = () => {
 
 const resetBoard = () => {
   const squares = document.getElementsByTagName("TD")
+  currentMarker = 'X';
+  playerTurn()
   // loops over the HTML Collections and clears out the Xs and Os
   for (i = 0; i < squares.length; i++) {
     console.log(squares[i])
     squares[i].innerHTML = null
   }
-  currentMarker = 'X'
-  playerTurn()
   board = [
     ['', '', ''],
     ['', '', ''],
     ['', '', '']]
+  console.log(currentMarker)
 }
 
 
 
 const resetScore = () => {
-  document.getElementById('playerXScore').innerHTML = '0'
-  document.getElementById('playerOScore').innerHTML = '0'
+  document.getElementById('playerXScore').innerHTML = 0;
+  document.getElementById('playerOScore').innerHTML = 0;
 }
+
+
 
 // **BONUSES**
 
