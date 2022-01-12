@@ -1,4 +1,4 @@
-let currentMarker = 'X'
+
 let board = [
   ['', '', ''],
   ['', '', ''],

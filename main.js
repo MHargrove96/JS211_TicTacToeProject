@@ -21,6 +21,7 @@ let board = [
 // assigns the first mark as 'X'
 // using let because the variable is expected to change from 'X' to 'O' and back
 let playerTurn = 'X';
+let currentMarker = 'X'
 
 // is a function that print the current status of the board using the variable - board
 const printBoard = () => {
@@ -32,25 +33,64 @@ const printBoard = () => {
   console.log('2 ' + board[2].join(' | '));
 }
 
+const addMarker = (row, column) => {
+  board[row][column] = currentMarker;
+  checkForWin()
+}
+
+const changeMarker = () => {
+  // ternary operator: if it's an X make it an O, if O make it an X
+  currentMarker = currentMarker === "X" ? "O" : "X"
+}
+
 const horizontalWin = () => {
   // Your code here to check for horizontal wins
+  if ((board[0][0] == 'X' && board[0][1] == 'X' && board[0][2] == 'X')
+    || (board[0][0] == 'O' && board[0][1] == 'O' && board[0][2] == 'O')
+    || (board[1][0] == 'X' && board[1][1] == 'X' && board[1][2] == 'X')
+    || (board[1][0] == 'O' && board[1][1] == 'O' && board[1][2] == 'O')
+    || (board[2][0] == 'X' && board[2][1] == 'X' && board[2][2] == 'X')
+    || (board[2][0] == 'O' && board[2][1] == 'O' && board[2][2] == 'O')) {
+    return true
+}
 }
 
 const verticalWin = () => {
   // Your code here to check for vertical wins
+  if ((board[0][0] == 'X' && board[1][0] == 'X' && board[2][0] == 'X')
+    || (board[0][0] == 'O' && board[1][0] == 'O' && board[2][0] == 'O')
+    || (board[0][1] == 'X' && board[1][1] == 'X' && board[2][1] == 'X')
+    || (board[0][1] == 'O' && board[1][1] == 'O' && board[2][1] == 'O')
+    || (board[0][2] == 'X' && board[1][2] == 'X' && board[2][2] == 'X')
+    || (board[0][2] == 'O' && board[1][2] == 'O' && board[2][2] == 'O')) {
+    return true
+}
 }
 
 const diagonalWin = () => {
   // Your code here to check for diagonal wins
+  if ((board[0][0] == 'X' && board[1][1] == 'X' && board[2][2] == 'X')
+    || (board[0][0] == 'O' && board[1][1] == 'O' && board[2][2] == 'O')
+    || (board[2][0] == 'X' && board[1][1] == 'X' && board[0][2] == 'X')
+    || (board[2][0] == 'O' && board[1][1] == 'O' && board[0][2] == 'O')) {
+    return true
+}
 }
 
 const checkForWin = () => {
   // Your code here call each of the check for types of wins
+  if (horizontalWin() || verticalWin() || diagonalWin()) {
+    return true
+  } else {
+    changeMarker()
+}
 }
 
 const ticTacToe = (row, column) => {
   // Your code here to place a marker on the board
   // then check for a win
+  addMarker(row, column)
+
 }
 
 const getPrompt = () => {
